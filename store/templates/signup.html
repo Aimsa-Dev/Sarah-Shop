@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SignUp</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'styles/login_page.css' %}">
+</head>
+<body>
+  
+<div class="main_container">
+ 
+<div class="center">
+
+  <div class="signup">
+    <h1 class="txt1">Welcome to Sarah Store</h1>
+    
+    <h2 class="txt2">Create an account with Email</h2>
+    <form action="/signup" method="POST">
+      {% csrf_token %}
+
+                {% if error%}
+                <div class="alert alert-danger" role="alert">
+                    {{error}}
+                </div>
+                {% endif %}
+      
+           
+  
+             <div class="data">
+              <label for="">First Name</label>
+              <input type="text" name="firstname"
+                     id="" value="{{values.first_name}}" required class="email_input"
+                     placeholder="">
+               </div>
+
+               <div class="data">
+                <label for="">Last Name</label>
+                <input type="text" name="lastname" 
+                id="" value="{{values.last_name}}" required class="email_input"
+                >
+                </div>
+               <div class="data">
+                <label for="">Phone</label>
+                    <input type="text" name="phone"  id="" required class="email_input" value="{{values.phone}}" placeholder="9876543210" >
+                 </div>
+                 <div class="data">
+                  <label for="">Email</label>
+                    <input required type="email" name="email" id=""
+                    value="{{values.email}}" 
+                    required class="email_input" placeholder="abc@gmail.com">
+                   </div>
+    
+
+         <div class="data">
+          <label for="">Create Password</label>
+                    <input type="password" 
+                    name="password" 
+                    id=""
+                    required class="password_input">
+           </div>
+
+        <div class="check"><input type="checkbox" class="d_box">
+        <p class="txt3">I Accept Terms of Use</p>
+        </div>
+
+        <button type="submit" class="butn">SignUp Now</button>
+    </form>
+  </div>
+  </div>
+
+  <div class="login">
+    <p class="acc">Already have an Account?</p>
+    <p><a href="{% url 'login' %}" class="login_link">Login</a></p>
+  </div>
+  </div>
+  </div>
+</div>
+</div>
+</div>
+
+  <script src="{% static 'res.js' %}"></script>
+</body>
+</html>
